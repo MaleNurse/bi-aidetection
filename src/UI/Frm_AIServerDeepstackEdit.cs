@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static AITool.Global;
 
 namespace AITool
 {
@@ -151,10 +152,10 @@ namespace AITool
 
             this.CurURL.UseOnlyAsLinkedServer = this.cb_OnlyLinked.Checked;
 
-            this.CurURL.HttpClientTimeoutSeconds = Convert.ToInt32(this.tb_timeout.Text.Trim());
+            this.CurURL.HttpClientTimeoutSeconds = GetNumberInt(this.tb_timeout.Text.Trim());
 
-            if (!string.IsNullOrWhiteSpace(this.tb_LinkedRefineTimeout.Text) && Convert.ToInt32(this.tb_LinkedRefineTimeout.Text.Trim()) >= 20)
-                AppSettings.Settings.MaxWaitForAIServerMS = Convert.ToInt32(this.tb_LinkedRefineTimeout.Text.Trim());
+            if (!string.IsNullOrWhiteSpace(this.tb_LinkedRefineTimeout.Text) && GetNumberInt(this.tb_LinkedRefineTimeout.Text.Trim()) >= 20)
+                AppSettings.Settings.MaxWaitForAIServerMS = GetNumberInt(this.tb_LinkedRefineTimeout.Text.Trim());
 
             AppSettings.Settings.MaxWaitForAIServerTimeoutError = this.cb_TimeoutError.Checked;
 
