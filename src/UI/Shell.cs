@@ -170,7 +170,7 @@ namespace AITool
                 //---------------------------------------------------------------------------
                 //SETTINGS TAB
 
-                //fill settings tab with stored settings 
+                //fill settings tab with stored settings
 
                 this.cmbInput.Text = AppSettings.Settings.input_path;
                 this.cb_inputpathsubfolders.Checked = AppSettings.Settings.input_path_includesubfolders;
@@ -592,7 +592,7 @@ namespace AITool
             else if (msg.MessageType == MessageType.DeleteHistoryItem)
             {
 
-                if (!HistoryDB.ReadOnly)  //assume service or other instance will be handling 
+                if (!HistoryDB.ReadOnly)  //assume service or other instance will be handling
                 {
                     HistoryDB.DeleteHistoryQueue(msg.Description);
                 }
@@ -1036,7 +1036,7 @@ namespace AITool
             }
             else if (this.tabControl1.SelectedTab == this.tabControl1.TabPages["tabLog"])
             {
-                //scroll to bottom, only when tab is active for better performance 
+                //scroll to bottom, only when tab is active for better performance
                 if (!this.toolStripButtonPauseLog.Checked)
                 {
                     await this.UpdateLogAddedRemovedAsync(true, true);
@@ -1166,7 +1166,7 @@ namespace AITool
                     result = result.Where(hist => hist.Camera.StartsWith(this.comboBox1.Text.Trim(), StringComparison.OrdinalIgnoreCase)).ToList();
                 }
 
-                //every int represents the number of ai calls in successive half hours (p.e. relevant[0] is 0:00-0:30 o'clock, relevant[1] is 0:30-1:00 o'clock) 
+                //every int represents the number of ai calls in successive half hours (p.e. relevant[0] is 0:00-0:30 o'clock, relevant[1] is 0:30-1:00 o'clock)
                 int[] all = new int[48];
                 int[] falses = new int[48];
                 int[] irrelevant = new int[48];
@@ -1219,13 +1219,13 @@ namespace AITool
                 //add to graph "all":
 
                 /*the graph will have a gap at the end and at the beginning if we don'f specify a value
-                * with an x value outside the visible area at the end and before the first visible point. 
-                * So the first point is at -0.25 and has the value of the last visible point and the 
+                * with an x value outside the visible area at the end and before the first visible point.
+                * So the first point is at -0.25 and has the value of the last visible point and the
                 * last point is at 24.25 and has the value of the first visible point. */
 
                 this.timeline.Series[0].Points.AddXY(-0.25, all[47]); // beginning point with value of last visible point
 
-                //and now add all visible points 
+                //and now add all visible points
                 double x = 0.25;
                 foreach (int halfhour in all)
                 {
@@ -1238,7 +1238,7 @@ namespace AITool
                 //add to graph "falses":
 
                 this.timeline.Series[1].Points.AddXY(-0.25, falses[47]); // beginning point with value of last visible point
-                                                                         //and now add all visible points 
+                                                                         //and now add all visible points
                 x = 0.25;
                 foreach (int halfhour in falses)
                 {
@@ -1250,7 +1250,7 @@ namespace AITool
                 //add to graph "irrelevant":
 
                 this.timeline.Series[2].Points.AddXY(-0.25, irrelevant[47]); // beginning point with value of last visible point
-                                                                             //and now add all visible points 
+                                                                             //and now add all visible points
                 x = 0.25;
                 foreach (int halfhour in irrelevant)
                 {
@@ -1262,7 +1262,7 @@ namespace AITool
                 //add to graph "relevant":
 
                 this.timeline.Series[3].Points.AddXY(-0.25, relevant[47]); // beginning point with value of last visible point
-                                                                           //and now add all visible points 
+                                                                           //and now add all visible points
                 x = 0.25;
                 foreach (int halfhour in relevant)
                 {
@@ -1275,7 +1275,7 @@ namespace AITool
                 //add to graph "skipped":
 
                 this.timeline.Series[4].Points.AddXY(-0.25, skipped[47]); // beginning point with value of last visible point
-                                                                          //and now add all visible points 
+                                                                          //and now add all visible points
                 x = 0.25;
                 foreach (int halfhour in skipped)
                 {
@@ -1495,7 +1495,7 @@ namespace AITool
                         absX = (int)(boxWidth - scale * imgWidth) / 2; //padding left and right of the image
                     }
 
-                    //2. inputted position values are for the original image size. As the image is probably smaller in the picturebox, the positions must be adapted. 
+                    //2. inputted position values are for the original image size. As the image is probably smaller in the picturebox, the positions must be adapted.
                     int xmin = (int)(scale * _xmin) + absX;
                     int xmax = (int)(scale * _xmax) + absX;
                     int ymin = (int)(scale * _ymin) + absY;
@@ -2046,7 +2046,7 @@ namespace AITool
 
         }
 
-        //check if a filter applies on given string of history list entry 
+        //check if a filter applies on given string of history list entry
         private bool checkListFilters(History hist)   //string cameraname, string success, string objects_and_confidence
         {
 
@@ -2232,7 +2232,7 @@ namespace AITool
                 foreach (Camera cam in AppSettings.Settings.CameraList)
                 {
                     //item.Tag = file; //tag is not used anywhere I can see
-                    //add camera to combobox on overview tab and to camera filter combobox in the History tab 
+                    //add camera to combobox on overview tab and to camera filter combobox in the History tab
                     this.comboBox1.Items.Add($"   {cam.Name}");
                     this.comboBox_filter_camera.Items.Add($"   {cam.Name}");
                     if (string.Equals(oldnamecameras.Trim(), cam.Name.Trim(), StringComparison.OrdinalIgnoreCase))
@@ -2274,7 +2274,7 @@ namespace AITool
 
         }
 
-        //load existing camera (settings file exists) into CameraList, into Stats dropdown and into History filter dropdown 
+        //load existing camera (settings file exists) into CameraList, into Stats dropdown and into History filter dropdown
         //private string LoadCamera(string config_path)
         //{
         //    //check if camera with specified name or its prefix already exists. If yes, then abort.
@@ -2295,7 +2295,7 @@ namespace AITool
         //    Log("add");
         //    AppSettings.Settings.CameraList.Add(cam); //add created camera object to CameraList
 
-        //    //add camera to combobox on overview tab and to camera filter combobox in the History tab 
+        //    //add camera to combobox on overview tab and to camera filter combobox in the History tab
         //    comboBox1.Items.Add($"   {cam.name}");
         //    comboBox_filter_camera.Items.Add($"   {cam.name}");
 
@@ -2408,7 +2408,7 @@ namespace AITool
 
                 this.tb_camera_telegram_chatid.Text = cam.telegram_chatid;
 
-                //load is masking enabled 
+                //load is masking enabled
                 this.cb_masking_enabled.Checked = cam.maskManager.MaskingEnabled;
 
 
@@ -2791,7 +2791,7 @@ namespace AITool
 
                 //1     2       3                             4                       5                 6        7              8                9
                 //name, prefix, triggering_objects_as_string, trigger_urls_as_string, telegram_enabled, enabled, cooldown_time, threshold_lower, threshold_upper,
-                //                                                               10           11  
+                //                                                               10           11
                 //                                                               _input_path, _input_path_includesubfolders,
                 //                                                          12   masking_enabled,
                 //                                                          13   trigger_cancel
@@ -3712,7 +3712,7 @@ namespace AITool
 
                     cam.Action_image_merge_detections = frm.cb_mergeannotations.Checked;
 
-                    cam.Action_image_merge_jpegquality = Convert.ToInt64(frm.tb_jpeg_merge_quality.Text);
+                    cam.Action_image_merge_jpegquality = GetNumberInt(frm.tb_jpeg_merge_quality.Text);
 
                     cam.Action_queued = frm.cb_queue_actions.Checked;
 
@@ -3932,7 +3932,7 @@ namespace AITool
             Log($"[System DPI Changed from {e.DeviceDpiOld} to {e.DeviceDpiNew}]");
 
             //we need to figure out how to force a full resize of all components - something is preventing that from happening
-            //automatically upon DPI change.   A suspicion is the custom DBLayoutPanel, but its a clusterfuck to try to 
+            //automatically upon DPI change.   A suspicion is the custom DBLayoutPanel, but its a clusterfuck to try to
             //revert back to TableLayoutPanel for everything.
 
         }
@@ -5191,5 +5191,3 @@ namespace AITool
         }
     }
 }
-
-
