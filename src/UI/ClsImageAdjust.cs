@@ -54,7 +54,7 @@ namespace AITool
             if (string.IsNullOrWhiteSpace(contrast))
                 contrast = this.Contrast.ToString();
 
-            this.JPEGQualityPercent = Convert.ToInt32(jpegqualitypercent);
+            this.JPEGQualityPercent = GetNumberInt(jpegqualitypercent);
             this.ImageSizePercent = Convert.ToInt32(imagesizepercent);
             this.ImageWidth = Convert.ToInt32(imagewidth);
             this.ImageHeight = Convert.ToInt32(imageheight);

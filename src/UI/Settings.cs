@@ -593,7 +593,7 @@ namespace AITool
 
                     if (Settings.telegram_cooldown_minutes > -1)
                     {
-                        Settings.telegram_cooldown_seconds = Convert.ToInt32(Math.Round(TimeSpan.FromMinutes(Settings.telegram_cooldown_minutes).TotalSeconds, 0));
+                        Settings.telegram_cooldown_seconds = GetNumberInt(Math.Round(TimeSpan.FromMinutes(Settings.telegram_cooldown_minutes).TotalSeconds, 0));
                         Settings.telegram_cooldown_minutes = -1;
                     }
 
@@ -679,7 +679,7 @@ namespace AITool
 
                         if (cam.cooldown_time > -1)
                         {
-                            cam.cooldown_time_seconds = Convert.ToInt32(Math.Round(TimeSpan.FromMinutes(cam.cooldown_time).TotalSeconds, 0));
+                            cam.cooldown_time_seconds = GetNumberInt(Math.Round(TimeSpan.FromMinutes(cam.cooldown_time).TotalSeconds, 0));
                             cam.cooldown_time = -1;
                         }
 
