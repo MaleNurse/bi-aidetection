@@ -134,8 +134,8 @@ namespace AITool
             this.CurURL.ImageAdjustProfile = this.cb_ImageAdjustProfile.Text;
             this.CurURL.MaxImagesPerMonth = Convert.ToInt32(this.tb_ImagesPerMonth.Text.Trim());
 
-            this.CurURL.Threshold_Lower = Convert.ToInt32(this.tb_Lower.Text.Trim());
-            this.CurURL.Threshold_Upper = Convert.ToInt32(this.tb_Upper.Text.Trim());
+            this.CurURL.Threshold_Lower = GetNumberInt(this.tb_Lower.Text.Trim());
+            this.CurURL.Threshold_Upper = GetNumberInt(this.tb_Upper.Text.Trim());
 
             this.CurURL.RefinementObjects = this.tb_RefinementObjects.Text.Trim();
             this.CurURL.UseAsRefinementServer = this.cb_RefinementServer.Checked;
