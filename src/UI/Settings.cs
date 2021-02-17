@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using static AITool.AITOOL;
+using static AITool.Global;
 
 namespace AITool
 {
