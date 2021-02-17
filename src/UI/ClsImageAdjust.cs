@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static AITool.Global;
 
 namespace AITool
 {
@@ -55,7 +54,7 @@ namespace AITool
             if (string.IsNullOrWhiteSpace(contrast))
                 contrast = this.Contrast.ToString();
 
-            this.JPEGQualityPercent = GetNumberInt(jpegqualitypercent);
+            this.JPEGQualityPercent = Convert.ToInt32(jpegqualitypercent);
             this.ImageSizePercent = Convert.ToInt32(imagesizepercent);
             this.ImageWidth = Convert.ToInt32(imagewidth);
             this.ImageHeight = Convert.ToInt32(imageheight);
